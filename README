@@ -1,0 +1,29 @@
+hotkey extension to tcl/tk for x11
+
+* build requirements
+
+tcl/tk development library
+x11 development library
+c compiler
+make
+
+* build shared library
+
+make
+
+* usage
+
+hotkey keycode modifiers script
+unhotkey keycode modifiers
+
+* example code
+
+load ./libhotkey.so
+# after finish creation of the tkwindow, add hotkey alt+a
+after 100 {hotkey 38 8 {puts hello}}
+
+* notes
+
+keycode and modifiers are arguments of XGrabKey(3).
+you can use xev commmand to check keycode and modifiers(state).
+modifiers is shift: +1, control: +4, alt: +8, mod4: +64.
