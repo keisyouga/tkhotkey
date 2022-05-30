@@ -13,8 +13,8 @@ make
 
 * usage
 
-hotkey keycode modifiers script
-unhotkey keycode modifiers
+hotkey::register keycode modifiers script
+hotkey::unregister keycode modifiers
 
 * example code
 
