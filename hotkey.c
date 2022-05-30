@@ -165,7 +165,7 @@ int Hotkey_Init(Tcl_Interp *interp)
 		return TCL_ERROR;
 	}
 
-	if (Tcl_PkgProvide(interp, "hotkey", "0.1") == TCL_ERROR) {
+	if (Tcl_PkgProvide(interp, "hotkey", "1.0") == TCL_ERROR) {
 		return TCL_ERROR;
 	}
 
