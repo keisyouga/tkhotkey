@@ -34,6 +34,11 @@ static int Hotkey_RegisterCmd(ClientData clientData,
 {
 	/* fprintf(stderr, "hotkey_Cmd: called with %d arguments\n", objc); */
 
+	if (objc != 4) {
+		Tcl_WrongNumArgs(interp, 1, objv, "keycode modifiers script");
+		return TCL_ERROR;
+	}
+
 	Tk_Window tkwin = Tk_MainWindow(interp);
 	if (!tkwin) {
 		fprintf(stderr, "Tk_MainWindow() return null\n");
@@ -79,6 +84,11 @@ static int Hotkey_UnregisterCmd(ClientData clientData,
                         Tcl_Obj *const objv[])
 {
 	/* fprintf(stderr, "unhotkey_Cmd: called with %d arguments\n", objc); */
+
+	if (objc != 3) {
+		Tcl_WrongNumArgs(interp, 1, objv, "keycode modifiers");
+		return TCL_ERROR;
+	}
 
 	Tk_Window tkwin = Tk_MainWindow(interp);
 	if (!tkwin) {
