@@ -44,18 +44,18 @@ static int SetXGrabKeyInfo(Tcl_Interp *interp, Tcl_Obj *key, Tcl_Obj *mod,
 {
 	Tk_Window tkwin = Tk_MainWindow(interp);
 	if (!tkwin) {
-		Tcl_SetObjResult(interp, Tcl_NewStringObj("Tk_MainWindow() return null\n", -1));
+		Tcl_SetObjResult(interp, Tcl_NewStringObj("Tk_MainWindow() return null", -1));
 		return TCL_ERROR;
 	}
 	Display *dpy = Tk_Display(tkwin);
 	if (!dpy) {
-		Tcl_SetObjResult(interp, Tcl_NewStringObj("Tk_Display() return null\n", -1));
+		Tcl_SetObjResult(interp, Tcl_NewStringObj("Tk_Display() return null", -1));
 		return TCL_ERROR;
 	}
 	Window root = DefaultRootWindow(dpy);
 	Window winid = Tk_WindowId(tkwin);
 	if (!winid) {
-		Tcl_SetObjResult(interp, Tcl_NewStringObj("Tk_WindowId() return null\n", -1));
+		Tcl_SetObjResult(interp, Tcl_NewStringObj("Tk_WindowId() return null", -1));
 		return TCL_ERROR;
 	}
 
