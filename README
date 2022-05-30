@@ -20,7 +20,7 @@ unhotkey keycode modifiers
 
 load ./libhotkey.so
 # after finish creation of the tkwindow, add hotkey alt+a
-after 100 {hotkey 38 8 {puts hello}}
+after 100 {hotkey::register 38 8 {puts hello}}
 
 * notes
 

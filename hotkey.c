@@ -4,6 +4,8 @@
 #include <tk.h>
 #include <stdio.h>
 
+#define NS "hotkey"
+
 /* dict of hotkey/script pairs */
 static Tcl_Obj *hotkeyInfo;
 
@@ -27,7 +29,7 @@ static int genericProc(ClientData clientData, XEvent *eventPtr)
 }
 
 /* register hotkey */
-static int hotkey_Cmd(ClientData clientData,
+static int Hotkey_RegisterCmd(ClientData clientData,
                       Tcl_Interp *interp, int objc, Tcl_Obj *const objv[])
 {
 	/* fprintf(stderr, "hotkey_Cmd: called with %d arguments\n", objc); */
@@ -72,7 +74,7 @@ static int hotkey_Cmd(ClientData clientData,
 }
 
 /* unregister hotkey */
-static int unhotkey_Cmd(ClientData clientData,
+static int Hotkey_UnregisterCmd(ClientData clientData,
                         Tcl_Interp *interp, int objc,
                         Tcl_Obj *const objv[])
 {
@@ -122,14 +124,20 @@ static int unhotkey_Cmd(ClientData clientData,
 /* initialize extension */
 int Hotkey_Init(Tcl_Interp *interp)
 {
+	/* fprintf(stderr, "Hotkey_Init\n"); */
 	if (Tcl_InitStubs(interp, TCL_VERSION, 0) == NULL) {
 		return TCL_ERROR;
 	}
 	if (Tk_InitStubs(interp, TK_VERSION, 0) == NULL) {
 		return TCL_ERROR;
 	}
-	Tcl_CreateObjCommand(interp, "hotkey", hotkey_Cmd, NULL, NULL);
-	Tcl_CreateObjCommand(interp, "unhotkey", unhotkey_Cmd, NULL, NULL);
+
+	if (Tcl_PkgProvide(interp, "hotkey", "0.1") == TCL_ERROR) {
+		return TCL_ERROR;
+	}
+
+	Tcl_CreateObjCommand(interp, NS "::register", Hotkey_RegisterCmd, NULL, NULL);
+	Tcl_CreateObjCommand(interp, NS "::unregister", Hotkey_UnregisterCmd, NULL, NULL);
 
 	/* store hotkey info as dict */
 	hotkeyInfo = Tcl_NewDictObj();
