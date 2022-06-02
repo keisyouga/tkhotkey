@@ -53,11 +53,6 @@ static int SetXGrabKeyInfo(Tcl_Interp *interp, Tcl_Obj *key, Tcl_Obj *mod,
 		return TCL_ERROR;
 	}
 	Window root = DefaultRootWindow(dpy);
-	Window winid = Tk_WindowId(tkwin);
-	if (!winid) {
-		Tcl_SetObjResult(interp, Tcl_NewStringObj("Tk_WindowId() return null", -1));
-		return TCL_ERROR;
-	}
 
 	int keycode;
 	Tcl_GetIntFromObj(interp, key, (int *)&keycode);

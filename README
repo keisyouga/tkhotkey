@@ -9,8 +9,8 @@ hotkey::unregister keycode modifiers
 
 # load hotkey extension
 load ./libhotkey.so
-# after finish creation of the tkwindow, add hotkey alt+a to put `hello'
-after 100 {hotkey::register 38 8 {puts hello}}
+# add hotkey alt+a to put `hello'
+hotkey::register 38 8 {puts hello}
 
 * build requirements
 
