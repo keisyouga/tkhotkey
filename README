@@ -4,6 +4,8 @@ hotkey extension to tcl/tk for x11
 
 hotkey::register keycode modifiers script
 hotkey::unregister keycode modifiers
+hotkey::register2 key script
+hotkey::unregister2 key modifiers
 
 * example code
 
@@ -11,6 +13,8 @@ hotkey::unregister keycode modifiers
 load ./libhotkey.so
 # add hotkey alt+a to put `hello'
 hotkey::register 38 8 {puts hello}
+# add hotkey alt+a to put `hello'
+hotkey::register2 Alt-a {puts hello}
 
 * build requirements
 
