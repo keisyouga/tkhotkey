@@ -1,1 +1,1 @@
-package ifneeded hotkey 1.0 [list load [file join $dir libhotkey.so]]
+package ifneeded hotkey 1.1 [list load [file join $dir libhotkey.so]]
